@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "framepilot"
+version = "0.1.0"
+description = "Local-first RAW culling and non-destructive colour grading for event photographers"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "PySide6>=6.7,<6.10",
+  "Pillow>=10.3,<12",
+  "numpy>=1.26,<3",
+  "rawpy>=0.21,<1",
+  "opencv-python-headless>=4.10,<5",
+  "ImageHash>=4.3,<5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9", "pytest-qt>=4.4,<5", "pyinstaller>=6.10,<7"]
+
+[project.scripts]
+framepilot = "framepilot.main:main"
+
+[tool.setuptools.packages.find]
+include = ["framepilot*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
